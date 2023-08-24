@@ -31,6 +31,8 @@ services:
       - database
     networks:
       - app_network
+    links:
+      - database
 
 networks:
   app_network:
