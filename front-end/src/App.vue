@@ -1,8 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUpdated } from 'vue';
 
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
+
+onMounted(() => console.log('component mounted'))
+onUpdated(() => console.log('component updated'))
 
   const state = ref(0); // reativo
 
