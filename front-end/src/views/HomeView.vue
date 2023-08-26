@@ -4,6 +4,12 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 <template>
   <main>
-    <TheWelcome />
+    <!-- <TheWelcome /> -->
   </main>
 </template>
+
+<style scoped>
+  body {
+    background-color: black;
+  }
+</style>

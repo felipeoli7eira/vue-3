@@ -1,10 +1,24 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+
+// import { RouterLink, RouterView } from 'vue-router'
+// import HelloWorld from './components/HelloWorld.vue'
+
+  const state = ref(0); // reativo
+
+  function handle_state_increment()
+  {
+    state.value += 1
+  }
 </script>
 
 <template>
-  <header>
+
+  <main>
+    <button v-on:click="handle_state_increment">adicionar - {{ state }}</button>
+
+
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -15,13 +29,17 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
-  <RouterView />
+    <RouterView />
+  </main>
 </template>
 
-<style scoped>
-header {
+<style>
+  body {
+    background-color: black;
+  }
+/* header {
   line-height: 1.5;
   max-height: 100vh;
 }
@@ -81,5 +99,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>
