@@ -1,10 +1,22 @@
 <script setup>
-import { ref, onMounted, onUpdated } from 'vue';
+import { ref, reactive, onMounted, onUpdated } from 'vue';
+
+// a diferença entre ref e reactive é que para valores primitivos, utiliza-se ref e para objetos utiliza-se o reactive
+
+const user_name = ref('Felipe Oliveira')
+const user_addresses = reactive([
+  { city: 'São Paulo', uf: 'SP', current: true },
+  { city: 'Macapá', uf: 'AP', current: false },
+])
 
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
 
-onMounted(() => console.log('component mounted'))
+onMounted(() => {
+  console.log('component mounted')
+
+  console.log(user_name.value, user_addresses)
+})
 onUpdated(() => console.log('component updated'))
 
   const state = ref(0); // reativo
