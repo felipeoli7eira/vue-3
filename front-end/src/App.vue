@@ -1,6 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from 'vue'
+import http from '@/services/http'
+
+onMounted(async () => {
+  const backend_test_api = await http.get('')
+
+  console.log(backend_test_api)
+})
+
 </script>
 
 <template>
