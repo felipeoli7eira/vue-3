@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+  import { useToast } from "vue-toastification";
+  const toast = useToast();
+
+  toast.success('Welcome to app')
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="home-view">
+    <h1>Vue</h1>
+  </div>
 </template>
