@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: 'vue-front-app'
+    build:
+      context: .
+    restart: 'always'
+    ports:
+      - '8080:8080'
+    volumes:
+      - './vue-app:/vue-app'
