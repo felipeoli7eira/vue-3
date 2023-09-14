@@ -1,16 +1,17 @@
-FROM node:18
+FROM node:lts-alpine
 
-# WORKDIR /vue-app
+RUN npm install -g http-server
 
-# COPY ./vue-app/package*.json .
+WORKDIR /vue3-node-app
 
-# RUN npm i
+COPY ./vue-app/package*.json .
 
-# COPY ./vue-app/public ./public
-# COPY ./vue-app .
+RUN npm i
+
+COPY ./vue-app/ .
 
 # RUN npm run dev -- --port 8080
 
 EXPOSE 8080
 
-# CMD [ "npm", "run", "dev", "--port", "8080" ]
+CMD [ "npm", "run", "dev", "--", "--port", "8080" ]
