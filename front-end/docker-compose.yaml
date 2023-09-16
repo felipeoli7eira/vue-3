@@ -1,11 +1,11 @@
-version: '3.8'
+version: "3.8"
 
 services:
   frontend:
-    container_name: 'vue3-node-app'
-    build:
-      context: .
+    container_name: def_vnode_app
+    build: .
     ports:
-      - 8080:8080
+      - "3000:3000"
+    command: sh -c "npm install && npm run dev"
     volumes:
-      - './vue-app:/vue3-node-app'
+      - './app:/usr/frontend'
