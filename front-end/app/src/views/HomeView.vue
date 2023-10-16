@@ -1,12 +1,12 @@
 <script setup>
-  import { useToast } from "vue-toastification";
-  const toast = useToast();
+import { onMounted } from 'vue';
 
-  toast.success('Welcome to app')
+onMounted(() => {
+  console.log('mounted'); // 1
+});
 </script>
 
 <template>
   <div id="home-view">
-    <h1>Vue</h1>
   </div>
 </template>

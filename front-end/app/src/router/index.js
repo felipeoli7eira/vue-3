@@ -1,14 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+import { existsAuthToken, attempt } from '@/mixins/auth.js'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
     },
+    {
+      path: '/login',
+      name: 'auth.login',
+      component: () => import('./../views/auth/Login.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    }
     // {
     //   path: '/about',
     //   name: 'about',
@@ -18,6 +31,23 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // }
   ]
+})
+
+router.beforeEach(async (to, from) => {
+
+  console.log(await attempt())
+
+  if (! (to.name === 'auth.login')) {
+    return { name: 'auth.login' }
+  }
+
+  // verifica se tem o token
+    // se n tem, nem tenta
+
+    // se tem, verifica na API a validade
+
+  // console.log(to)
+  // console.log(from)
 })
 
 export default router
