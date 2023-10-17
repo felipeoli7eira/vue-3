@@ -15,17 +15,20 @@
     </div>
   </div>
 
-  <div class="border border-danger" v-else>
+  <div v-else>
     <router-view />
   </div>
 </template>
 
 <script setup>
   import { RouterLink, RouterView } from 'vue-router'
-  import { ref } from 'vue'
+  import { ref, onUpdated } from 'vue'
+  import * as auth from '@/mixins/auth.js'
 
   const isLoggedIn = ref(false)
-
+  onUpdated(() => {
+    console.log('updated')
+  })
   // console.log(isLoggedIn.value)
 </script>
 

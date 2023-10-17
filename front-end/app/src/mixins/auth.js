@@ -1,17 +1,44 @@
 import http from '@/services/http.js'
 
-async function attempt()
+async function attempt(email, password)
 {
     try
     {
-        const token = localStorage.hachi_integrations_auth_token
+        const request = await http.post('/login', {
+            email,
+            password
+        })
 
-        const request = await http.get('/login')
-
-        console.log(request)
+        return request
     }
     catch (error)
     {
+        if (error?.response?.data) {
+            return error.response.data
+        }
+
+        return false
+    }
+}
+
+async function checkAuth()
+{
+    try
+    {
+        if (!existsAuthToken()) {
+            return false
+        }
+
+        const token = getToken()
+        console.log(token)
+
+        // const request = await http.get('/login')
+
+        return true
+    }
+    catch (error)
+    {
+        console.warn('checkAuth: '.concat(error))
         return false
     }
 }
@@ -34,4 +61,14 @@ function getToken()
     return localStorage.hachi_integrations_auth_token
 }
 
-export { attempt, existsAuthToken, getToken }
+function setToken(token)
+{
+    localStorage.hachi_integrations_auth_token = token
+}
+
+function logOut()
+{
+    console.log('logOut')
+}
+
+export { attempt, existsAuthToken, getToken, checkAuth, logOut, setToken }

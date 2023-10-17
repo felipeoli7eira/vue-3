@@ -1,12 +1,11 @@
 <script setup>
 import { onMounted } from 'vue';
-
-onMounted(() => {
-  console.log('mounted'); // 1
-});
 </script>
 
 <template>
   <div id="home-view">
+    <nav>
+      <router-link :to="{ name: 'auth.login' }">login</router-link>
+    </nav>
   </div>
 </template>
